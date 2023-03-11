@@ -37,7 +37,7 @@ namespace WriteErase.Pages
         private void SortOrFilt()
         {
             orders = Base.EM.Order.ToList();
-           
+             
 
             if (CBDiscount.SelectedIndex != 0) //фильтрация
             {
