@@ -22,6 +22,7 @@ namespace WriteErase.Pages
     public partial class Orders : Page
     {
         List<Order> orders;
+        double priceSort;
         public Orders()
         {
             InitializeComponent();
@@ -140,6 +141,7 @@ namespace WriteErase.Pages
 
             }
             tb.Text = "Общая сумма заказа "+ price + " руб.";
+            priceSort = price;
         }
 
         private void TBSumDiscon_Loaded(object sender, RoutedEventArgs e)
