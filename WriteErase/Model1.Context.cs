@@ -13,12 +13,11 @@ namespace WriteErase
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities2 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities2()
+            : base("name=Entities2")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

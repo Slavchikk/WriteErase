@@ -33,6 +33,7 @@
                     <Button Content="Отмена" Margin="10,0,0,0"  Name="btnError" Width="100" Height="20"></Button>
                   
                 </StackPanel>
+                <TextBlock Style="{StaticResource  TBStyle}" x:Name="EnterHowGuess" MouseDown="EnterHowGuess_MouseDown">Войти как гость</TextBlock>
             </StackPanel>
         </Grid>
     </Grid>

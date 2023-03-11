@@ -21,6 +21,7 @@ namespace WriteErase
         }
     
         public int OrderID { get; set; }
+        public int OrderNumber { get; set; }
         public System.DateTime OrderDate { get; set; }
         public System.DateTime OrderDeliveryDate { get; set; }
         public int PointIssueID { get; set; }

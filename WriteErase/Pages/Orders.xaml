@@ -1,4 +1,4 @@
-﻿<Page x:Class="WriteErase.Pages.ListProduct"
+﻿<Page x:Class="WriteErase.Pages.Orders"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,8 @@
       xmlns:local="clr-namespace:WriteErase.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ListProduct">
-    <Page.Resources>
-        <BitmapImage x:Key="defaultImage" UriSource="../default/picture.png"/>
-    </Page.Resources>
+      Title="Orders">
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -19,13 +17,11 @@
         </Grid.RowDefinitions>
 
 
-        
-        
         <StackPanel Grid.Row="0" Orientation="Vertical" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
-                <TextBlock HorizontalAlignment="Center" Name="MainTitle" Style="{StaticResource  TBMainText}">Список товаров</TextBlock>
-                <TextBlock HorizontalAlignment="Right" Name="TbFIO" Margin="50,0,0,0" Style="{StaticResource  TBStyle}"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Name="MainTitle" Style="{StaticResource  TBMainText}">Список заказов</TextBlock>
+              
             </StackPanel>
 
             <StackPanel  Orientation="Horizontal" >
@@ -49,29 +45,17 @@
                         <ComboBoxItem>от 0% до 9.99%</ComboBoxItem>
                         <ComboBoxItem>от 10% до 14.99%</ComboBoxItem>
                         <ComboBoxItem>от 15%</ComboBoxItem>
-                        
+
                     </ComboBox>
 
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="10,0,0,25">
-                    <TextBlock Style="{StaticResource  TBStyle}" Margin="0,0,15,10">Поиск по названию</TextBlock>
-                    <TextBox  TextChanged="TbFindTitle_TextChanged"  Height="30" Width="160" Name="TbFindTitle"></TextBox>
-                </StackPanel>
-                <StackPanel Margin="40,0,0,0" Orientation="Horizontal">
-                    <TextBlock Margin="20,0,0,0" Style="{StaticResource  TBStyle}" Name ="TbSecond"></TextBlock>
-
-                    <TextBlock Margin="20,0,20,0" Style="{StaticResource  TBStyle}" >из</TextBlock>
-                    <TextBlock Style="{StaticResource  TBStyle}" Name ="TbFirst"></TextBlock>
-                  
-
-                </StackPanel>
+               
             </StackPanel>
         </StackPanel>
 
 
 
-
-        <ListView Name="listProduct" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1" Margin="0,30,0,0">
+        <ListView Name="listOrder" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1" Margin="0,30,0,0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -80,25 +64,22 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="Aquamarine">
-                        <Grid Name="gridMain" Background="{Binding DiscountColor}">
+                        <Grid Name="gridMain" Background="{Binding CountInStockColor}">
 
                             <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
-                                <StackPanel Width="200" HorizontalAlignment="Left">
-                                    <Image Width="200" Source="{Binding ProductPhoto, TargetNullValue={StaticResource defaultImage}}"/>
-                                </StackPanel>
-
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}" Name="TbName" Text="{Binding ProductName}"/>
+                                  <StackPanel Orientation="Vertical">
+                                    <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}" Name="TbNumber" Text="{Binding OrderID,StringFormat=  Номер товара: {0} }"/>
                                     <StackPanel Orientation="Vertical">
 
-                                        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbDecsp" Text="{Binding ProductDescription,StringFormat= Описание товара: {0} }"/>
-                                        <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Text="{Binding ProductManufacturerID,StringFormat= Производитель: {0}}"/>
+                                        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbDate" Text="{Binding OrderDate,StringFormat= Дата заказа: {0} }"/>
+                                        <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbDateDel" Text="{Binding OrderDeliveryDate,StringFormat= Дата доставки: {0}}"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding ProductDiscountAmount}"  Style="{StaticResource  TBStyle}" TextDecorations="Strikethrough" Name="TBCost" Text="{Binding ProductCost, StringFormat= Цена: {0:g}}" Loaded="TBCost_Loaded"/>
-                                            <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbCost" Text="{Binding DiscPrice, StringFormat= {} {0:g}}"/>
+                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSostav" Loaded="TBSostav_Loaded"/>
+                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSumPrice" Loaded="TbSummPrice_Loaded"/>
+                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSumDiscon" Loaded="TBSumDiscon_Loaded"/>
                                         </StackPanel>
                                     </StackPanel>
-                                    
+
 
                                 </StackPanel>
 
@@ -114,8 +95,7 @@
         </ListView>
 
         <StackPanel Margin="20" HorizontalAlignment="Left" Grid.Row="2">
-            <Button x:Name="goOrder" Content="Заказы" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrder_Click"></Button>
-        </StackPanel>
+              </StackPanel>
 
 
 

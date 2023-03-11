@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace WriteErase
 {
@@ -22,6 +24,23 @@ namespace WriteErase
                 else
                 {
                     return Convert.ToString(ProductCost);
+                }
+            }
+        }
+       
+        public SolidColorBrush DiscountColor 
+        {
+            get
+            {
+                if (ProductDiscountAmount != null && ProductDiscountAmount>1)
+                {
+                    SolidColorBrush mushThen15 = new SolidColorBrush(Color.FromRgb(127, 255, 0));
+                    return mushThen15;
+                }
+                else
+                {
+                    SolidColorBrush notMushThen15 = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    return notMushThen15;
                 }
             }
         }

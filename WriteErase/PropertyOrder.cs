@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace WriteErase
 {
-    internal class Base
+    public partial class PropertyOrder
     {
-        public static Entities2 EM;
+        
     }
 }

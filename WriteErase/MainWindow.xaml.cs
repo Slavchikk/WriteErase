@@ -23,9 +23,9 @@ namespace WriteErase
         public MainWindow()
         {
             InitializeComponent();
-            Base.EM = new Entities();
+            Base.EM = new Entities2();
             FrameClass.MainFrame = fMain;
-            FrameClass.MainFrame.Navigate(new Pages.ListProduct());
+            FrameClass.MainFrame.Navigate(new Pages.AutorizationPage());
         }
     }
 }

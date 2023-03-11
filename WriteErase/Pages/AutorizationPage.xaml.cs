@@ -37,7 +37,7 @@ namespace WriteErase.Pages
                 }
                 else if (user.UserPassword == TbPasReg.Password)
                 {
-                FrameClass.MainFrame.Navigate(new Pages.ListProduct());
+                FrameClass.MainFrame.Navigate(new Pages.ListProduct(user));
 
             }
                 else
@@ -47,6 +47,11 @@ namespace WriteErase.Pages
                 }
             
            
+        }
+
+        private void EnterHowGuess_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Pages.ListProduct());
         }
     }
 }

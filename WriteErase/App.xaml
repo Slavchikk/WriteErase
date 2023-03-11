@@ -27,7 +27,7 @@
         </Style>
         <ControlTemplate x:Key="CTButon" TargetType="Button">
             <Border CornerRadius="25" BorderBrush="Black" BorderThickness="2"
-                    Background="LightBlue" Height="30">
+                     Height="30">
                 <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="1"/>
             </Border>
         </ControlTemplate>

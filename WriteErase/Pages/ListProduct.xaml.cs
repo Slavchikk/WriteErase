@@ -21,18 +21,33 @@ namespace WriteErase.Pages
     public partial class ListProduct : Page
     {
         List<Product> products;
+        User users;
         public ListProduct()
         {
             InitializeComponent();
             SortOrFilt();
             var brush = new SolidColorBrush(Color.FromArgb(255, 73, 140, 81));
             MainTitle.Foreground = brush;
+            TbFIO.Text = "Гость";
+            brush = new SolidColorBrush(Color.FromArgb(255, 118, 227, 133));
+            goOrder.Background = brush;
+        }
+        public ListProduct(User user)
+        {
+            InitializeComponent();
+            SortOrFilt();
+            var brush = new SolidColorBrush(Color.FromArgb(255, 73, 140, 81));
+            MainTitle.Foreground = brush;
+            TbFIO.Text = user.UserName + "  " +  user.UserSurname + "  " + user.UserPatronymic;
+            brush = new SolidColorBrush(Color.FromArgb(255, 118, 227, 133));
+            goOrder.Background = brush;
+            users = user;
         }
 
         private void SortOrFilt()
         {
             products = Base.EM.Product.ToList();
-            //TbFirst.Text = services.Count.ToString();
+            TbFirst.Text = products.Count.ToString();
 
             if (CBDiscount.SelectedIndex != 0) //фильтрация
             {
@@ -86,7 +101,7 @@ namespace WriteErase.Pages
             }
            
 
-           // TbSecond.Text = services.Count.ToString();
+            TbSecond.Text = products.Count.ToString();
             // listTable.ItemsSource = services;
             listProduct.ItemsSource = products;
         }
@@ -117,6 +132,11 @@ namespace WriteErase.Pages
             {
                 textB.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void goOrder_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Pages.Orders(users));
         }
     }
 }
