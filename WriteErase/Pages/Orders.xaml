@@ -64,20 +64,22 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="Aquamarine">
-                        <Grid Name="gridMain" Background="{Binding CountInStockColor}">
+                        <Grid Name="gridMain" Background="{Binding CounyMuchThen3}">
 
                             <StackPanel Margin="30,0,0,0" Orientation="Horizontal">
                                   <StackPanel Orientation="Vertical">
-                                    <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}" Name="TbNumber" Text="{Binding OrderID,StringFormat=  Номер товара: {0} }"/>
+                                    <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}" Name="TbNumber" Text="{Binding OrderNumber,StringFormat=  Номер заказа: {0} }"/>
+                                    <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSostav" Loaded="TBSostav_Loaded"/>
                                     <StackPanel Orientation="Vertical">
 
                                         <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbDate" Text="{Binding OrderDate,StringFormat= Дата заказа: {0} }"/>
                                         <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbDateDel" Text="{Binding OrderDeliveryDate,StringFormat= Дата доставки: {0}}"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSostav" Loaded="TBSostav_Loaded"/>
+                                         
                                             <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSumPrice" Loaded="TbSummPrice_Loaded"/>
                                             <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding OrderID}"  Style="{StaticResource  TBStyle}"  Name="TBSumDiscon" Loaded="TBSumDiscon_Loaded"/>
                                         </StackPanel>
+                                        <TextBlock Style="{StaticResource  TBStyle}" Text="{Binding User.FIO, StringFormat={}Клиент: {0}}"/>
                                     </StackPanel>
 
 

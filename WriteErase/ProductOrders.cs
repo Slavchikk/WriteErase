@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace WriteErase
 {
-    internal class Base
+  
+    public class ProductOrders
     {
-        public static Entities3 EM;
+        public Product product { get; set; }
+        public int count { get; set; }
+       
     }
 }

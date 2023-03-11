@@ -26,6 +26,7 @@ namespace WriteErase.Pages
         {
             InitializeComponent();
             SortOrFilt();
+           
         }
         public Orders(User user)
         {
@@ -82,8 +83,8 @@ namespace WriteErase.Pages
             //}
 
 
-
-           
+            listOrder.ItemsSource = orders;
+          
             // listTable.ItemsSource = services;
            // listProduct.ItemsSource = products;
         }
@@ -91,26 +92,25 @@ namespace WriteErase.Pages
         {
             TextBlock tb = (TextBlock)sender;  // получаем доступ к TextBlock из шаблона
             int index = Convert.ToInt32(tb.Uid);
-            List<OrderProduct> list = Base.EM.OrderProduct.Where(x=>x.OrderID== index).ToList();
-
-            string text = "";
-
-            int id = 0;
-            foreach (OrderProduct tc in list)
+            List<OrderProduct> orderProducts = Base.EM.OrderProduct.Where(x => x.OrderID == index).ToList();
+            string compound = "";
+            
+            for (int i = 0; i < orderProducts.Count; i++)
             {
-                id = tc.OrderProductID;
-            }
+                    if (i == orderProducts.Count - 1)
+                    {
+                        compound = compound + orderProducts[i].Product.ProductName + " Количество: " + orderProducts[i].Count;
+                    }
+                    else
+                    {
+                        compound = compound + orderProducts[i].Product.ProductName + " Количество: " + orderProducts[i].Count + "; \n";
+                    }
+             }
+            SolidColorBrush mushThen15 = new SolidColorBrush(Color.FromRgb(255, 140, 0));
+            
 
-            List<Product> hc = Base.EM.Product.Where(x => x.ProductArticleNumberID == id).ToList();
 
-            string product = "";
-
-            foreach (Product hcc in hc)
-            {
-                product = hcc.ProductName;
-            }
-
-            tb.Text = "Состав: " + product;
+            tb.Text = "Состав: " + compound;
         }
 
         private void TbSummPrice_Loaded(object sender, RoutedEventArgs e)
@@ -139,6 +139,7 @@ namespace WriteErase.Pages
                 }
 
             }
+            tb.Text = "Общая сумма заказа "+ price + " руб.";
         }
 
         private void TBSumDiscon_Loaded(object sender, RoutedEventArgs e)
@@ -163,7 +164,7 @@ namespace WriteErase.Pages
                 List<Product> hc = Base.EM.Product.Where(x => x.ProductArticleNumberID == d).ToList();
                 foreach (Product hcc in hc)
                 {
-                    discount += Convert.ToDouble(hcc.ProductDiscountAmount);
+                    discount += Convert.ToDouble(hcc.ProductCost) - hcc.DiscPriceDouble;
                 }
                
             }

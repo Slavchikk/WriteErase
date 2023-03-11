@@ -21,16 +21,19 @@ namespace WriteErase.Pages
     public partial class ListProduct : Page
     {
         List<Product> products;
+        List<ProductOrders> productOrders = new List<ProductOrders>();
         User users;
         public ListProduct()
         {
             InitializeComponent();
             SortOrFilt();
+
             var brush = new SolidColorBrush(Color.FromArgb(255, 73, 140, 81));
             MainTitle.Foreground = brush;
             TbFIO.Text = "Гость";
             brush = new SolidColorBrush(Color.FromArgb(255, 118, 227, 133));
             goOrder.Background = brush;
+            goOrders.Visibility = Visibility.Hidden;
         }
         public ListProduct(User user)
         {
@@ -48,7 +51,7 @@ namespace WriteErase.Pages
         {
             products = Base.EM.Product.ToList();
             TbFirst.Text = products.Count.ToString();
-
+          
             if (CBDiscount.SelectedIndex != 0) //фильтрация
             {
                 switch (CBDiscount.SelectedIndex)
@@ -104,6 +107,10 @@ namespace WriteErase.Pages
             TbSecond.Text = products.Count.ToString();
             // listTable.ItemsSource = services;
             listProduct.ItemsSource = products;
+            if(products.Count == 0)
+            {
+                MessageBox.Show("Данные не найдены","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
         }
 
         private void cbSort_Chang(object sender, SelectionChangedEventArgs e)
@@ -137,6 +144,39 @@ namespace WriteErase.Pages
         private void goOrder_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new Pages.Orders(users));
+        }
+
+        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Product prod = (Product)listProduct.SelectedItem;
+            int check = 0;
+            foreach (ProductOrders pr in productOrders)
+            {
+                if (pr.product == prod)
+                {
+                    pr.count = pr.count += 1;
+                    check = 1;
+                }
+            }
+            if (check==0)
+            {
+                ProductOrders product = new ProductOrders();
+                product.product = prod;
+                product.count = 1;
+                productOrders.Add(product);
+            }
+            goOrders.Visibility = Visibility.Visible;
+        }
+
+        private void goOrders_Click(object sender, RoutedEventArgs e)
+        {
+            windows.FromOrders fromOrders = new windows.FromOrders(productOrders);
+
+            fromOrders.ShowDialog();
+            //if (productOrders.Count == 0)
+            //{
+                
+            //}
         }
     }
 }

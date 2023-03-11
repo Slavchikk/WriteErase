@@ -94,8 +94,11 @@
                                         <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbDecsp" Text="{Binding ProductDescription,StringFormat= Описание товара: {0} }"/>
                                         <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Text="{Binding ProductManufacturerID,StringFormat= Производитель: {0}}"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding ProductDiscountAmount}"  Style="{StaticResource  TBStyle}" TextDecorations="Strikethrough" Name="TBCost" Text="{Binding ProductCost, StringFormat= Цена: {0:g}}" Loaded="TBCost_Loaded"/>
+                                            <TextBlock  HorizontalAlignment="Left" Margin="10,0,0,0"  Uid="{Binding ProductDiscountAmount}"  Style="{StaticResource  TBStyle}" TextDecorations="Strikethrough" Name="TBCost" Text="{Binding ProductCost, StringFormat= Цена: {0:F2}}" Loaded="TBCost_Loaded"/>
+                                            <TextBlock Text=" Цена:" Style="{StaticResource  TBStyle}" ></TextBlock>
                                             <TextBlock HorizontalAlignment="Left"  Margin="10,0,0,0" Style="{StaticResource  TBStyle}" Name="TbCost" Text="{Binding DiscPrice, StringFormat= {} {0:g}}"/>
+                                      
+                                        <TextBlock Style="{StaticResource  TBStyle}" >руб.</TextBlock>
                                         </StackPanel>
                                     </StackPanel>
                                     
@@ -105,16 +108,23 @@
                                 <StackPanel Margin="20,0,0,0" Orientation="Vertical" Width="200" HorizontalAlignment="Right">
                                     <TextBlock HorizontalAlignment="Right" Style="{StaticResource  TBStyle}" Margin="0,20,0,0" Width="200" Text="{Binding ProductDiscountAmount, StringFormat={}*скидка {0} %}"/>
                                 </StackPanel>
+                             
                             </StackPanel>
 
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="btnAddOrder" Header="Добавить к заказу" Click="btnAddOrder_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
 
         <StackPanel Margin="20" HorizontalAlignment="Left" Grid.Row="2">
             <Button x:Name="goOrder" Content="Заказы" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrder_Click"></Button>
+            <Button x:Name="goOrders" Content="корзина" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrders_Click"></Button>
         </StackPanel>
 
 

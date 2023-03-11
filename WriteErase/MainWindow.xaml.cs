@@ -23,7 +23,7 @@ namespace WriteErase
         public MainWindow()
         {
             InitializeComponent();
-            Base.EM = new Entities2();
+            Base.EM = new Entities3();
             FrameClass.MainFrame = fMain;
             FrameClass.MainFrame.Navigate(new Pages.AutorizationPage());
         }

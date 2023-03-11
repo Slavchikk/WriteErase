@@ -10,6 +10,19 @@ namespace WriteErase
 {
     public partial class Product
     {
+        public double DiscPriceDouble
+        {
+            get
+            {
+               
+
+                    double onePers = Convert.ToDouble(ProductCost) / 100;
+                    double price = Convert.ToDouble(ProductCost) - onePers * (Convert.ToDouble(ProductDiscountAmount));
+                    return price;
+                
+               
+            }
+        }
         public string DiscPrice
         {
             get
@@ -32,7 +45,7 @@ namespace WriteErase
         {
             get
             {
-                if (ProductDiscountAmount != null && ProductDiscountAmount>1)
+                if (ProductDiscountAmount != null && ProductDiscountAmount>15)
                 {
                     SolidColorBrush mushThen15 = new SolidColorBrush(Color.FromRgb(127, 255, 0));
                     return mushThen15;
