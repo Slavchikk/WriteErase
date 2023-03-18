@@ -39,6 +39,7 @@ namespace WriteErase.windows
             cbPoint.ItemsSource = Base.EM.PointIssue.ToList();
             cbPoint.SelectedValuePath = "PointIssueID";
             cbPoint.DisplayMemberPath = "PostCode";
+          
             cbPoint.SelectedIndex = 0;
             this.user = user;
             if (user != null)

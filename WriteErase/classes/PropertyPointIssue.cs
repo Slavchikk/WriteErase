@@ -13,8 +13,8 @@ namespace WriteErase.classes
         {
             get
             {
-                return PostCode + " " + City + " " + Street + " " + NumberHome + ".";
-               // return null;
+            
+                return null;
             }
             set
             {

@@ -40,34 +40,41 @@ namespace WriteErase.Pages
         private void SortOrFilt()
         {
             orders = Base.EM.Order.ToList();
-             
 
-            if (CBDiscount.SelectedIndex != -1) //фильтрация
+            try
             {
-                switch (CBDiscount.SelectedIndex)
+                if (CBDiscount.SelectedIndex != -1) //фильтрация
                 {
-                    case 0:
-                        orders = Base.EM.Order.ToList();
-                        break;
-                    case 1:
-                        {
-                            orders = Base.EM.Order.Where(x => x.DiscPrice >= 0 && x.DiscPrice < 10).ToList();
-                        }
-                        break;
-                    case 2:
-                        {
-                            orders = Base.EM.Order.Where(x => x.DiscPrice >= 10 && x.DiscPrice < 15).ToList();
-                        }
-                        break;
-                    case 3:
-                        {
-                            orders = Base.EM.Order.Where(x => x.DiscPrice >= 15 ).ToList();
-                        }
-                        break;
+                    
+                    switch (CBDiscount.SelectedIndex)
+                    {
+                        case 0:
+                            orders = Base.EM.Order.ToList();
+                            break;
+                        case 1:
+                            {
+                                orders = Base.EM.Order.Where(x => x.DiscPrice >= 0 && x.DiscPrice < 10).ToList();
+                            }
+                            break;
+                        case 2:
+                            {
+                                orders = Base.EM.Order.Where(x => x.DiscPrice >= 10 && x.DiscPrice < 15).ToList();
+                            }
+                            break;
+                        case 3:
+                            {
+                                orders = Base.EM.Order.Where(x => x.DiscPrice >= 15).ToList();
+                            }
+                            break;
 
+                    }
                 }
             }
-            
+            catch
+            {
+                MessageBox.Show("Ошибка фильтрации");
+                CBDiscount.SelectedIndex = 0;
+            }
 
 
             if ((CBSort.SelectedIndex != -1)) //сортировка
