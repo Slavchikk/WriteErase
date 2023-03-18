@@ -104,6 +104,7 @@ namespace WriteErase.windows
                 {
                     this.Close();
                 }
+                conclusionShow();
             }
             catch
             {
