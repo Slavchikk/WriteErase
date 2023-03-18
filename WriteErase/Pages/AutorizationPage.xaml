@@ -35,7 +35,7 @@
 
                 <StackPanel  Margin="0,50,0,10" HorizontalAlignment="Left"  Orientation="Horizontal">
                     <Button Content="Вход" Name="btnEnter" Width="100" Height="20" Click="btnEnter_Click" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
-                    <Button Content="Отмена" Margin="10,0,0,0"  Name="btnError" Width="100" Height="20" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
+                 
                   
                 </StackPanel>
                 <TextBlock Style="{StaticResource  TBStyle}"  x:Name="tbTime"></TextBlock>
