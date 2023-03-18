@@ -24,6 +24,12 @@ namespace WriteErase.windows
     {
         User user;
         List<ProductOrders> productOrders;
+        /// <summary>
+        /// Метод дли инициализации списка заказов
+        /// </summary>
+        /// <param name="productOrders"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public FromOrders(List<ProductOrders> productOrders, User user)
         {
             InitializeComponent();

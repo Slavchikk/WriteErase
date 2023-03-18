@@ -38,7 +38,7 @@ namespace WriteErase.Pages
         {
             InitializeComponent();
             SortOrFilt();
-           
+            goOrders.Visibility = Visibility.Hidden;
             TbFIO.Text = user.UserName + "  " +  user.UserSurname + "  " + user.UserPatronymic;
             if(user.UserRoleID == 1) {
                 goOrder.Visibility = Visibility.Hidden;
