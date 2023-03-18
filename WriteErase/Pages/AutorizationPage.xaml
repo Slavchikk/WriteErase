@@ -33,7 +33,7 @@
                 </StackPanel>
               
 
-                <StackPanel  Margin="0,50,0,10" HorizontalAlignment="Left"  Orientation="Horizontal">
+                <StackPanel  Margin="0,50,0,10" HorizontalAlignment="Center"  Orientation="Horizontal">
                     <Button Content="Вход" Name="btnEnter" Width="100" Height="20" Click="btnEnter_Click" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
                  
                   
