@@ -28,25 +28,28 @@ namespace WriteErase.Pages
             InitializeComponent();
             SortOrFilt();
 
-            var brush = new SolidColorBrush(Color.FromArgb(255, 73, 140, 81));
-            MainTitle.Foreground = brush;
+          
             TbFIO.Text = "Гость";
-            brush = new SolidColorBrush(Color.FromArgb(255, 118, 227, 133));
-            goOrder.Background = brush;
+           
             goOrders.Visibility = Visibility.Hidden;
+            goOrder.Visibility = Visibility.Hidden;
         }
         public ListProduct(User user)
         {
             InitializeComponent();
             SortOrFilt();
-            var brush = new SolidColorBrush(Color.FromArgb(255, 73, 140, 81));
-            MainTitle.Foreground = brush;
+           
             TbFIO.Text = user.UserName + "  " +  user.UserSurname + "  " + user.UserPatronymic;
-            brush = new SolidColorBrush(Color.FromArgb(255, 118, 227, 133));
-            goOrder.Background = brush;
+            if(user.UserRoleID == 1) {
+                goOrder.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                goOrder.Visibility = Visibility.Visible;
+            }
             users = user;
         }
-
+      
         private void SortOrFilt()
         {
             products = Base.EM.Product.ToList();
@@ -170,13 +173,15 @@ namespace WriteErase.Pages
 
         private void goOrders_Click(object sender, RoutedEventArgs e)
         {
-            windows.FromOrders fromOrders = new windows.FromOrders(productOrders);
+            windows.FromOrders fromOrders = new windows.FromOrders(productOrders,users);
 
             fromOrders.ShowDialog();
-            //if (productOrders.Count == 0)
-            //{
-                
-            //}
+           
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Pages.AutorizationPage());
         }
     }
 }

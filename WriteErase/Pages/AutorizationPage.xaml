@@ -4,36 +4,42 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WriteErase.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AutorizationPage">
+      mc:Ignorable="d" Style="{StaticResource PageStyle}"
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="AutorizationPage" 
+      >
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height ="300*"/>
             <RowDefinition Height ="600*"/>
         </Grid.RowDefinitions>
-     
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+          
+            <TextBlock HorizontalAlignment="Center" Name="MainTitle" Style="{StaticResource  TBMainText}"> Авторизация</TextBlock>
+        </StackPanel>
 
         <Grid Grid.Row="1">
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <StackPanel Margin="0,20,0,10" HorizontalAlignment="Right"  Orientation="Horizontal">
-                    <TextBlock Text="Логин"></TextBlock>
-                    <TextBox Width="170" Height="30" Name="Tblogin"/>
+                    <TextBlock Style="{StaticResource  TBStyle}" FontSize="26" >Логин</TextBlock>
+                    <TextBox Width="170" Height="30" FontSize="14" Name="Tblogin"/>
                 </StackPanel>
                 <StackPanel Margin="0,10,0,10" HorizontalAlignment="Right" Height="30" Orientation="Horizontal">
-                    <TextBlock>Пароль</TextBlock>
+                    <TextBlock Style="{StaticResource  TBStyle}" FontSize="26">Пароль</TextBlock>
                     <PasswordBox Width="170" Name="TbPasReg"/>
                 </StackPanel>
               
 
                 <StackPanel  Margin="0,50,0,10" HorizontalAlignment="Left"  Orientation="Horizontal">
-                    <Button Content="Вход" Name="btnEnter" Width="100" Height="20" Click="btnEnter_Click"></Button>
-                    <Button Content="Отмена" Margin="10,0,0,0"  Name="btnError" Width="100" Height="20"></Button>
+                    <Button Content="Вход" Name="btnEnter" Width="100" Height="20" Click="btnEnter_Click" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
+                    <Button Content="Отмена" Margin="10,0,0,0"  Name="btnError" Width="100" Height="20" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
                   
                 </StackPanel>
-                <TextBlock Style="{StaticResource  TBStyle}" x:Name="EnterHowGuess" MouseDown="EnterHowGuess_MouseDown">Войти как гость</TextBlock>
+                <TextBlock Style="{StaticResource  TBStyle}"  x:Name="tbTime"></TextBlock>
+                <TextBlock Style="{StaticResource  TBStyle}"  x:Name="EnterHowGuess" MouseDown="EnterHowGuess_MouseDown">Войти как гость</TextBlock>
             </StackPanel>
         </Grid>
     </Grid>

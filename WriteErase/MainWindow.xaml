@@ -4,9 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WriteErase"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
+        Title="MainWindow" Height="1000" Width="1200"  MinHeight="800" MinWidth="1000">
     <Grid>
-        <Frame Name="fMain" Grid.Row="1" Grid.ColumnSpan="3" NavigationUIVisibility="Hidden"></Frame>
+     
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+                <Image Source="/default/logo.png" Height="70"/>
+                <TextBlock Text="ООО «Пиши-стирай»" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+            </StackPanel>
+            <Frame Name="fMain" Grid.Row="1" Grid.ColumnSpan="3" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

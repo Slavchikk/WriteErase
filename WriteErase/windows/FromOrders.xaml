@@ -4,16 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WriteErase.windows"
-        mc:Ignorable="d"
-        Title="FromOrders" Height="450" Width="800">
+        mc:Ignorable="d" 
+        Title="FromOrders" Height="800" Width="1000" MinHeight="600" MinWidth="800">
     <Window.Resources>
         <BitmapImage x:Key="defaultImage" UriSource="../default/picture.png"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="143*"/>
-            <RowDefinition Height="600*"/>
-            <RowDefinition Height="150*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+          
         </Grid.RowDefinitions>
 
 
@@ -44,6 +45,7 @@
                                     <Image Width="200" Source="{Binding product.ProductPhoto, TargetNullValue={StaticResource defaultImage}}"/>
                                 </StackPanel>
 
+                                <StackPanel Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}" Name="TbName" Text="{Binding product.ProductName}"/>
                                     <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}" Name="TbPrice" Text="{Binding product.ProductCost, StringFormat= Цена: {0:F2}}"/>
@@ -53,10 +55,16 @@
                                     <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}"  Text="{Binding product.ProductArticleNumber, StringFormat= Арикул: {0}}"/>
                                     <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}"  Text="{Binding product.ProductCategory.ProductCategory1, StringFormat= Категория: {0}}"/>
                                     <TextBlock VerticalAlignment="Top" Style="{StaticResource  TBStyleMain}"  Text="{Binding product.ProductSupplier.ProductSupplier1, StringFormat= Производитель: {0}}"/>
-
+                                   
                                 </StackPanel>
-
-                                
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Количество: "/>
+                                            <TextBox Uid="{Binding product.ProductArticleNumberID}" Text="{Binding count}" Width="100"  PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged"/>
+                                        </StackPanel>
+                                        <Button x:Name="btnDelete" Uid="{Binding product.ProductArticleNumberID}" Content="Удалить товар"  Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Left" Click="btnDelete_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
 
                             </StackPanel>
 
@@ -68,17 +76,22 @@
         </ListView>
 
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="2" Orientation="Vertical" >
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            
+            <StackPanel Grid.Row="2" Orientation="Horizontal" >
+                <StackPanel Width="500" Orientation="Horizontal" VerticalAlignment="Center">
 
                     <TextBlock Name="tbSum" Style="{StaticResource  TBStyle}"></TextBlock>
                     <TextBlock Name="tbDisc" Margin="50,0,0,0" Style="{StaticResource  TBStyle}"></TextBlock>
                 </StackPanel>
+                <StackPanel Width="300"  VerticalAlignment="Center" Orientation="Horizontal" >
+                    <TextBlock Text="Пункт выдачи: "/>
+                    <ComboBox Width="200" Name="cbPoint" Height="30"/>
+                    
+                </StackPanel>
+                <Button x:Name="btnBack" Content="Назад" Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Left" Click="btnBack_Click"/>
+                <Button x:Name="btnBuy" Content="Оформить заказ"  Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Center" Click="btnBuy_Click"/>
             </StackPanel>
+          
         </Grid>
        
 

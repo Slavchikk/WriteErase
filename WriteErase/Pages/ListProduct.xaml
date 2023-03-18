@@ -55,7 +55,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10,0,0,25">
                     <TextBlock Style="{StaticResource  TBStyle}" Margin="0,0,15,10">Поиск по названию</TextBlock>
-                    <TextBox  TextChanged="TbFindTitle_TextChanged"  Height="30" Width="160" Name="TbFindTitle"></TextBox>
+                    <TextBox  TextChanged="TbFindTitle_TextChanged"  FontSize="14" Height="30" Width="160" Name="TbFindTitle"></TextBox>
                 </StackPanel>
                 <StackPanel Margin="40,0,0,0" Orientation="Horizontal">
                     <TextBlock Margin="20,0,0,0" Style="{StaticResource  TBStyle}" Name ="TbSecond"></TextBlock>
@@ -122,9 +122,10 @@
             </ListView.ContextMenu>
         </ListView>
 
-        <StackPanel Margin="20" HorizontalAlignment="Left" Grid.Row="2">
-            <Button x:Name="goOrder" Content="Заказы" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrder_Click"></Button>
-            <Button x:Name="goOrders" Content="корзина" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrders_Click"></Button>
+        <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Left" Grid.Row="2">
+            <Button x:Name="goOrder" Content="Заказы" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrder_Click" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
+            <Button Content="Назад" Name="btnEnter" Width="100" Height="20" Click="btnBack_Click" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
+            <Button x:Name="goOrders" Content="Корзина" Width="150"  BorderBrush="Black" BorderThickness="2" Height="30" Click="goOrders_Click" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
         </StackPanel>
 
 

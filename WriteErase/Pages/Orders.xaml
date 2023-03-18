@@ -87,6 +87,8 @@
 
                                 <StackPanel Margin="20,0,0,0" Orientation="Vertical" Width="200" HorizontalAlignment="Right">
                                     <TextBlock HorizontalAlignment="Right" Style="{StaticResource  TBStyle}" Margin="0,20,0,0" Width="200" Text="{Binding ProductDiscountAmount, StringFormat={}*скидка {0} %}"/>
+                                    <Button x:Name="btnChange" Uid="{Binding OrderID}" Grid.Column="0" Content="Изменить статус"  Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Center" Width="300" Click="btnChange_Click"/>
+                                    <Button x:Name="btnChangeDate" Uid="{Binding OrderID}" Grid.Column="0" Content="Изменить дату заказа"  Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Center" Width="300" Click="btnChangeDate_Click"/>
                                 </StackPanel>
                             </StackPanel>
 
@@ -97,7 +99,8 @@
         </ListView>
 
         <StackPanel Margin="20" HorizontalAlignment="Left" Grid.Row="2">
-              </StackPanel>
+            <Button Content="Назад" Name="btnEnter" Width="100" Height="20" Click="btnBack_Click" FontSize="12" Style="{StaticResource ResourceKey=BtnStyle}"></Button>
+        </StackPanel>
 
 
 

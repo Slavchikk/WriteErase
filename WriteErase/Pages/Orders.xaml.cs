@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WriteErase.windows;
 
 namespace WriteErase.Pages
 {
@@ -23,6 +24,7 @@ namespace WriteErase.Pages
     {
         List<Order> orders;
         double priceSort;
+        User user;
         public Orders()
         {
             InitializeComponent();
@@ -33,61 +35,65 @@ namespace WriteErase.Pages
         {
             InitializeComponent();
             SortOrFilt();
+            this.user = user;
         }
         private void SortOrFilt()
         {
             orders = Base.EM.Order.ToList();
              
 
-            if (CBDiscount.SelectedIndex != 0) //фильтрация
+            if (CBDiscount.SelectedIndex != -1) //фильтрация
             {
                 switch (CBDiscount.SelectedIndex)
                 {
+                    case 0:
+                        orders = Base.EM.Order.ToList();
+                        break;
                     case 1:
                         {
-                           // orders = Base.EM.Order.Where(x => x.ProductDiscountAmount >= 0 && x.ProductDiscountAmount < 10).ToList();
+                            orders = Base.EM.Order.Where(x => x.DiscPrice >= 0 && x.DiscPrice < 10).ToList();
                         }
                         break;
                     case 2:
                         {
-                           // products = Base.EM.Product.Where(x => x.ProductDiscountAmount >= 10 && x.ProductDiscountAmount < 15).ToList();
+                            orders = Base.EM.Order.Where(x => x.DiscPrice >= 10 && x.DiscPrice < 15).ToList();
                         }
                         break;
                     case 3:
                         {
-                            //products = Base.EM.Product.Where(x => x.ProductDiscountAmount >= 15).ToList();
+                            orders = Base.EM.Order.Where(x => x.DiscPrice >= 15 ).ToList();
                         }
                         break;
 
                 }
             }
-            else if (CBDiscount.SelectedIndex != -1)
+            
+
+
+            if ((CBSort.SelectedIndex != -1)) //сортировка
             {
-               // products = Base.EM.Product.ToList();
+
+                if (CBSort.SelectedIndex == 0)
+                {
+                    orders = orders.OrderBy(x => x.SumDisc).ToList();
+                }
+
+                else
+                {
+                    orders = orders.OrderByDescending(x => x.SumDisc).ToList();
+                }
+
+
             }
 
 
-
-            //if ((CBSort.SelectedIndex != -1)) //сортировка
-            //{
-
-            //    if (CBSort.SelectedIndex == 0)
-            //    {
-            //        products = products.OrderBy(x => x.ProductCost).ToList();
-            //    }
-            //    else
-            //    {
-            //        products = products.OrderByDescending(x => x.ProductCost).ToList();
-            //    }
-
-
-            //}
-
-
             listOrder.ItemsSource = orders;
+            if(orders.Count==0)
+            {
+                MessageBox.Show("Данные не найдены");
+            }
           
-            // listTable.ItemsSource = services;
-           // listProduct.ItemsSource = products;
+        
         }
         private void TBSostav_Loaded(object sender, RoutedEventArgs e)
         {
@@ -179,12 +185,35 @@ namespace WriteErase.Pages
 
         private void cbSort_Chang(object sender, SelectionChangedEventArgs e)
         {
-
+            SortOrFilt();
         }
 
         private void cbFiltr_Chang(object sender, SelectionChangedEventArgs e)
         {
+            SortOrFilt();
+        }
 
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Pages.ListProduct(user));
+        }
+
+        private void btnChange_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            int index = Convert.ToInt32(btn.Uid);
+            Order order = Base.EM.Order.FirstOrDefault(x => x.OrderID == index);
+            ChangeStatus changeStatus = new ChangeStatus(order);
+            changeStatus.ShowDialog();
+        }
+
+        private void btnChangeDate_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            int index = Convert.ToInt32(btn.Uid);
+            Order order = Base.EM.Order.FirstOrDefault(x => x.OrderID == index);
+            ChangeDate changeOrderDeliveryDate = new ChangeDate(order);
+            changeOrderDeliveryDate.ShowDialog();
         }
     }
 }

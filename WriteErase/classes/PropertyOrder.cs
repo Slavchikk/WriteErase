@@ -9,6 +9,38 @@ namespace WriteErase
 {
     public partial class Order
     {
+        public double DiscPrice
+        {
+            get
+            {
+                List<OrderProduct> products = Base.EM.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
+                double sum = 0;
+                foreach (OrderProduct product in products)
+                {
+                    sum = sum + (Convert.ToDouble(product.Product.DiscPrice) * product.Count);
+                }
+                double summa = 0;
+                foreach (OrderProduct product in products)
+                {
+                    summa = summa + (Convert.ToDouble(product.Product.ProductCost) * product.Count);
+                }
+                double proc = (summa - sum) / summa * 100;
+                return proc;
+            }
+        }
+        public double SumDisc
+        {
+            get
+            {
+                List<OrderProduct> products = Base.EM.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
+                double sum = 0;
+                foreach (OrderProduct product in products)
+                {
+                    sum = sum + (Convert.ToDouble(product.Product.ProductCost) * Convert.ToDouble(product.Product.DiscPrice) / 100) * product.Count;
+                }
+                return sum;
+            }
+        }
         public SolidColorBrush CounyMuchThen3
         {
             get

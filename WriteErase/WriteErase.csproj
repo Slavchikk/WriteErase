@@ -64,7 +64,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Base.cs" />
+    <Compile Include="classes\Base.cs" />
+    <Compile Include="classes\PropertyPointIssue.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,12 +111,12 @@
     <Compile Include="ProductManufacturer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductOrders.cs" />
+    <Compile Include="classes\ProductOrders.cs" />
     <Compile Include="ProductSupplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="PropertyOrder.cs" />
-    <Compile Include="PropertyProduct.cs" />
+    <Compile Include="classes\PropertyOrder.cs" />
+    <Compile Include="classes\PropertyProduct.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -128,6 +129,15 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="windows\captcha.xaml.cs">
+      <DependentUpon>captcha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\ChangeDate.xaml.cs">
+      <DependentUpon>ChangeDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\ChangeStatus.xaml.cs">
+      <DependentUpon>ChangeStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\FromOrders.xaml.cs">
       <DependentUpon>FromOrders.xaml</DependentUpon>
     </Compile>
@@ -139,7 +149,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FrameClass.cs" />
+    <Compile Include="classes\FrameClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -153,6 +163,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Orders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\captcha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\ChangeDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\ChangeStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,6 +234,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="default\icon.ico" />
+    <Resource Include="default\logo.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -223,5 +247,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

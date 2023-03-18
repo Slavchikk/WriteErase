@@ -1,0 +1,26 @@
+﻿<Window x:Class="WriteErase.windows.ChangeDate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WriteErase.windows"
+          mc:Ignorable="d" Style="{StaticResource WindowStyle}"
+        Title="ChangeStatus" Height="450" Width="800" MinHeight="300" MinWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Изменение даты заказа"  Style="{StaticResource  TBMainText}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <TextBlock Text="Дата заказа" Margin="10" HorizontalAlignment="Center"/>
+            <DatePicker Name="dpDate" Grid.Row="1" MinWidth="200"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button  x:Name="btnChange" Content="Изменить"  Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Left" Click="btnChange_Click"/>
+            <Button Margin="90,0,0,0" x:Name="btnBack" Content="Назад" Style="{StaticResource ResourceKey=BtnStyle}" HorizontalAlignment="Left" Click="btnBack_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
