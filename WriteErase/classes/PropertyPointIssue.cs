@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace WriteErase.classes
 {
-    public partial class PointIssue
+    public partial class PointIssueD
     {
         public string punkt
         {
             get
             {
-                // return  PostCode + " " + City + " " + Street + " " + NumberHome + ".";
-                return null;
+                return PostCode + " " + City + " " + Street + " " + NumberHome + ".";
+               // return null;
             }
             set
             {
